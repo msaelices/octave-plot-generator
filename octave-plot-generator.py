@@ -6,6 +6,7 @@ import os
 import subprocess
 from os import path
 
+# command line args config
 parser = argparse.ArgumentParser()
 parser.add_argument('folder')
 parser.add_argument('destfolder')
@@ -18,12 +19,14 @@ parser.add_argument(
 parser.add_argument(
     '--noexec', help='do no execute octave. only adapt scripts', action="store_true")
 
-
+# parsed command line args
 args = parser.parse_args()
 
-verbosity = logging.DEBUG if args.verbosity >= 2 else logging.INFO
-
-logging.basicConfig(format='%(message)s', level=verbosity)
+# logging config
+logging.basicConfig(
+    format='%(message)s',
+    level=logging.DEBUG if args.verbosity >= 2 else logging.INFO,
+)
 
 
 def _saveas_line(script_name, plot_count):
@@ -36,6 +39,9 @@ def _saveas_line(script_name, plot_count):
 
 
 def refactor_script(basedir, file_name):
+    """
+    Adapt an already existing Octave script to save all its plot figures to files
+    """
     global args
 
     script_name, ext = path.splitext(file_name)
@@ -64,6 +70,9 @@ def refactor_script(basedir, file_name):
 
 
 def main():
+    """
+    Main function
+    """
     global args
     folder = args.folder
     destfolder = args.destfolder
