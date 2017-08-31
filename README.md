@@ -12,15 +12,32 @@ Read a bunch of octave scripts and save all the plots generated in those scripts
 * octave
 * epstools
 
-## Usage
+## Basic usage
 
 Run in a terminal the script:
 
-    $ python3 octave-plot-generator.py --format=pdf /path/to/octave-scripts/folder/ /destination/folder/
+    $ python3 octave-plot-generator.py /path/to/octave-scripts/folder/ /destination/folder/
 
-For more detailed help:
+## Detailed usage
 
-    $ python3 octave-plot-generator.py --help
+    $ python octave-plot-generator.py --help
+    usage: octave-plot-generator.py [-h] [-v VERBOSITY] [-f FORMAT] [-o OCTAVE]
+                                    [--noexec]
+                                    folder destfolder
+
+    positional arguments:
+      folder
+      destfolder
+
+    optional arguments:
+      -h, --help            show this help message and exit
+      -v VERBOSITY, --verbosity VERBOSITY
+                            increase output verbosity
+      -f FORMAT, --format FORMAT
+                            output plot format
+      -o OCTAVE, --octave OCTAVE
+                            octave binary path
+      --noexec              do no execute octave. only adapt scripts
 
 ## Example
 
